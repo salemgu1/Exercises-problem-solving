@@ -47,9 +47,39 @@ public class Solution {
         return false;
     }
 
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+
+        for (int i = 0; i < t.length(); i++) {
+            char c = t.charAt(i);
+
+            if (!map.containsKey(c)) {
+                return false;
+            }
+
+            map.put(c, map.get(c) - 1);
+            if (map.get(c) == 0) {
+                map.remove(c);
+            }
+        }
+
+        return map.isEmpty();
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
 //        System.out.print(Arrays.toString(test.twoSum(new int[]{2, 7, 11, 15}, 9)));
-        System.out.println( test.isValid("()[]{}"));
+//        System.out.println( test.isValid("()[]{}"));
+//        System.out.println(test.isAnagram("anagram","nagaram"));
+        
     }
 }
