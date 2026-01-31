@@ -118,6 +118,24 @@ public class Solution {
         return -1;
     }
 
+    public char findTheDifference(String s, String t) {
+        HashMap <Character,Integer> map = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
+        }
+        for (int i = 0; i < t.length(); i++) {
+            char c = t.charAt(i);
+            if(!map.containsKey(c) || map.get(c) == 0){
+                return t.charAt(i);
+            }
+            map.put(c,map.get(c)-1);
+
+
+        }
+        return ' ';
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
 //        System.out.print(Arrays.toString(test.twoSum(new int[]{2, 7, 11, 15}, 9)));
@@ -126,6 +144,7 @@ public class Solution {
 //        String[] words = {"flower", "flow", "flight"};
 //        System.out.println(test.longestCommonPrefix(words));
 //        System.out.println(test.containsDuplicate(new int[]{1,2,3}));
-        System.out.println(test.firstUniqChar("leetcode"));
+//        System.out.println(test.firstUniqChar("leetcode"));
+        System.out.println(test.findTheDifference("aabb","aabbb"));
     }
 }
