@@ -105,6 +105,18 @@ public class Solution {
         }
         return false;
     }
+    public int firstUniqChar(String s) {
+        HashMap<Character,Integer> map= new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if( map.get(s.charAt(i)) == 1){
+                return i;
+            }
+        }
+        return -1;
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();
@@ -113,7 +125,7 @@ public class Solution {
 //        System.out.println(test.isAnagram("anagram","nagaram"));
 //        String[] words = {"flower", "flow", "flight"};
 //        System.out.println(test.longestCommonPrefix(words));
-        System.out.println(test.containsDuplicate(new int[]{1,2,3}));
-
+//        System.out.println(test.containsDuplicate(new int[]{1,2,3}));
+        System.out.println(test.firstUniqChar("leetcode"));
     }
 }
