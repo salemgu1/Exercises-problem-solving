@@ -75,6 +75,7 @@ public class Solution {
         return map.isEmpty();
     }
     public String longestCommonPrefix(String[] strs) {
+        // ["flower","flow","flight"]
         if (strs == null || strs.length == 0) {
             return "";
         }
@@ -92,12 +93,27 @@ public class Solution {
 
         return prefix;
     }
+    public boolean containsDuplicate(int[] nums) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i <nums.length ; i++) {
+            map.put(nums[i],(map.getOrDefault(nums[i],0)  +1));
+        }
+        for (int i = 0; i <nums.length ; i++) {
+            if (map.get(nums[i]) >1 ) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();
 //        System.out.print(Arrays.toString(test.twoSum(new int[]{2, 7, 11, 15}, 9)));
 //        System.out.println( test.isValid("()[]{}"));
 //        System.out.println(test.isAnagram("anagram","nagaram"));
-        
+//        String[] words = {"flower", "flow", "flight"};
+//        System.out.println(test.longestCommonPrefix(words));
+        System.out.println(test.containsDuplicate(new int[]{1,2,3}));
+
     }
 }
