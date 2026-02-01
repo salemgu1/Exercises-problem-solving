@@ -130,10 +130,32 @@ public class Solution {
                 return t.charAt(i);
             }
             map.put(c,map.get(c)-1);
-
-
         }
         return ' ';
+    }
+    public boolean isIsomorphic(String s, String t) {
+        if (s.length() != t.length()){
+            return false;
+        }
+        int size = t.length();
+        HashMap<Character,Character> mapST = new HashMap<>();
+        HashMap<Character,Character> mapTS = new HashMap<>();
+
+        for (int i = 0; i < size; i++) {
+            char a = s.charAt(i);
+            char b = t.charAt(i);
+
+            if(mapST.containsKey(a) && mapST.get(a) !=b){
+                return false;
+            }
+            if(mapST.containsKey(b) && mapST.get(b) !=a){
+                return false;
+            }
+
+            mapST.put(a,b);
+            mapTS.put(b,a);
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -145,6 +167,7 @@ public class Solution {
 //        System.out.println(test.longestCommonPrefix(words));
 //        System.out.println(test.containsDuplicate(new int[]{1,2,3}));
 //        System.out.println(test.firstUniqChar("leetcode"));
-        System.out.println(test.findTheDifference("aabb","aabbb"));
+//        System.out.println(test.findTheDifference("aabb","aabbb"));
+        System.out.println(test.isIsomorphic("f11","b22"));
     }
 }
