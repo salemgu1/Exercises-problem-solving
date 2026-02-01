@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Stack;
+import java.util.*;
 
 public class Solution {
 
@@ -148,7 +146,7 @@ public class Solution {
             if(mapST.containsKey(a) && mapST.get(a) !=b){
                 return false;
             }
-            if(mapST.containsKey(b) && mapST.get(b) !=a){
+            if(mapTS.containsKey(b) && mapTS.get(b) !=a){
                 return false;
             }
 
@@ -180,6 +178,22 @@ public class Solution {
 
         }
         return true;
+    }
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String,List<String>> map = new HashMap<>();
+        for (String word : strs){
+            char chars [] = word.toCharArray();
+            Arrays.sort(chars);
+            String sortedWord = new String(chars);
+
+            if(!map.containsKey(sortedWord)){
+                map.put(sortedWord,new ArrayList<>());
+            }
+            map.get(sortedWord).add(word);
+
+        }
+        return new ArrayList<>(map.values());
+
     }
 
 
