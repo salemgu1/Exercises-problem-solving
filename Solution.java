@@ -163,6 +163,9 @@ public class Solution {
         HashMap<String, Character> reverseMap = new HashMap<>();
 
         String[] words = s.split(" ");
+        if(words.length != pattern.length()){
+            return false;
+        }
         for (int i = 0; i <words.length; i++) {
             char c = pattern.charAt(i);
             String word = words[i];
@@ -174,7 +177,6 @@ public class Solution {
             }
             map.put(pattern.charAt(i),word);
             reverseMap.put(word,pattern.charAt(i));
-            System.out.println(map);
 
         }
         return true;
