@@ -158,6 +158,29 @@ public class Solution {
         return true;
     }
 
+    public boolean wordPattern(String pattern, String s) {
+        HashMap<Character,String> map = new HashMap<>();
+        HashMap<String, Character> reverseMap = new HashMap<>();
+
+        String[] words = s.split(" ");
+        for (int i = 0; i <words.length; i++) {
+            char c = pattern.charAt(i);
+            String word = words[i];
+            if(map.containsKey(pattern.charAt(i)) && !map.get(pattern.charAt(i)).equals(words[i])){
+                return false;
+            }
+            if (reverseMap.containsKey(word) && reverseMap.get(word) != c) {
+                return false;
+            }
+            map.put(pattern.charAt(i),word);
+            reverseMap.put(word,pattern.charAt(i));
+            System.out.println(map);
+
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) {
         Solution test = new Solution();
 //        System.out.print(Arrays.toString(test.twoSum(new int[]{2, 7, 11, 15}, 9)));
@@ -168,6 +191,7 @@ public class Solution {
 //        System.out.println(test.containsDuplicate(new int[]{1,2,3}));
 //        System.out.println(test.firstUniqChar("leetcode"));
 //        System.out.println(test.findTheDifference("aabb","aabbb"));
-        System.out.println(test.isIsomorphic("f11","b22"));
+//        System.out.println(test.isIsomorphic("f11","b22"));
+        System.out.println(test.wordPattern("abba","dog cat cat dog"));
     }
 }
