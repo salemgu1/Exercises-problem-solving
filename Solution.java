@@ -213,6 +213,35 @@ public class Solution {
         return result;
     }
 
+    public int longestConsecutive(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+
+        int longestStreak = 0;
+
+        // نمشي على كل رقم
+        for (int num : nums) {
+            // إذا الرقم هو بداية تسلسل (ما في رقم قبله)
+            if (!set.contains(num - 1)) {
+                int currentNum = num;
+                int currentStreak = 1;
+
+                // نعد التسلسل من الرقم الحالي للأرقام اللي بعدها
+                while (set.contains(currentNum + 1)) {
+                    currentNum += 1;
+                    currentStreak += 1;
+                }
+
+                // نحدث طول أطول تسلسل
+                longestStreak = Math.max(longestStreak, currentStreak);
+            }
+        }
+        return longestStreak;
+
+    }
+
 
     public static void main(String[] args) {
         Solution test = new Solution();
@@ -235,6 +264,7 @@ public class Solution {
 //        for (int num : topK) {
 //            System.out.print(num + " ");
 //        }
+        System.out.println(test.longestConsecutive(new int[]{100, 4, 200, 1, 3, 2}));
 
 
     }
