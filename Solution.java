@@ -196,6 +196,23 @@ public class Solution {
 
     }
 
+    public int[] topKFrequent(int[] nums, int k) {
+        HashMap <Integer,Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i],(map.getOrDefault(nums[i],0)+1));
+        }
+        List<Integer> keys = new ArrayList<>(map.keySet());
+        keys.sort((a, b) -> Integer.compare(map.get(b), map.get(a)));
+
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+            result[i] = keys.get(i);
+        }
+
+        return result;
+    }
+
 
     public static void main(String[] args) {
         Solution test = new Solution();
@@ -208,6 +225,17 @@ public class Solution {
 //        System.out.println(test.firstUniqChar("leetcode"));
 //        System.out.println(test.findTheDifference("aabb","aabbb"));
 //        System.out.println(test.isIsomorphic("f11","b22"));
-        System.out.println(test.wordPattern("abba","dog cat cat dog"));
+//        System.out.println(test.wordPattern("abba","dog cat cat dog"));
+//        System.out.println(test.groupAnagrams({"eat","tea","tan","ate","nat","bat"}));
+//        int[] nums = {1, 1, 1, 2, 2, 3};
+//        int k = 2;
+//        int[] topK = test.topKFrequent(nums, k);
+//        System.out.println("Top " + k + " frequent elements:");
+//
+//        for (int num : topK) {
+//            System.out.print(num + " ");
+//        }
+
+
     }
 }
