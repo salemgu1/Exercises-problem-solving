@@ -273,6 +273,20 @@ public class Solution {
         return true;
     }
 
+    public int removeDuplicates(int[] nums) {
+        if(nums.length == 0 ){
+            return 0;
+        }
+        int k = 1 ;
+        for (int i = 1; i < nums.length; i++) {
+            if(nums[i] != nums[i-1]){
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+        return k;
+    }
+
 
     public static void main(String[] args) {
         Solution test = new Solution();
@@ -298,7 +312,7 @@ public class Solution {
 //        System.out.println(test.longestConsecutive(new int[]{100, 4, 200, 1, 3, 2}));
 //        test.reverseString(new char[]{'h', 'e', 'l', 'l', 'o'});
 
-        System.out.println(test.isPalindrome("A man, a plan, a canal: Panama"));
-
+//        System.out.println(test.isPalindrome("A man, a plan, a canal: Panama"));
+        System.out.println(test.removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}));
     }
 }
