@@ -223,23 +223,33 @@ public class Solution {
 
         // نمشي على كل رقم
         for (int num : nums) {
-            // إذا الرقم هو بداية تسلسل (ما في رقم قبله)
             if (!set.contains(num - 1)) {
                 int currentNum = num;
                 int currentStreak = 1;
 
-                // نعد التسلسل من الرقم الحالي للأرقام اللي بعدها
                 while (set.contains(currentNum + 1)) {
                     currentNum += 1;
                     currentStreak += 1;
                 }
 
-                // نحدث طول أطول تسلسل
                 longestStreak = Math.max(longestStreak, currentStreak);
             }
         }
         return longestStreak;
+    }
+    public void reverseString(char[] s) {
+        int left =0 ;
+        int right = s.length - 1;
+        while (left<right){
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
 
+            left++;
+            right--;
+        }
+
+        System.out.println(s);
     }
 
 
@@ -264,7 +274,8 @@ public class Solution {
 //        for (int num : topK) {
 //            System.out.print(num + " ");
 //        }
-        System.out.println(test.longestConsecutive(new int[]{100, 4, 200, 1, 3, 2}));
+//        System.out.println(test.longestConsecutive(new int[]{100, 4, 200, 1, 3, 2}));
+        test.reverseString(new char[]{'h', 'e', 'l', 'l', 'o'});
 
 
     }
