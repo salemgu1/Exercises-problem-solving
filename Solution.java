@@ -252,6 +252,27 @@ public class Solution {
         System.out.println(s);
     }
 
+    public boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left<right){
+            while (left<right && !Character.isLetterOrDigit(s.charAt(left))){
+                left++;
+            }
+            while (left<right && !Character.isLetterOrDigit(s.charAt(right))){
+                right--;
+            }
+
+            if (Character.toLowerCase(s.charAt(left))!=Character.toLowerCase(s.charAt(right))){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
 
     public static void main(String[] args) {
         Solution test = new Solution();
@@ -275,8 +296,9 @@ public class Solution {
 //            System.out.print(num + " ");
 //        }
 //        System.out.println(test.longestConsecutive(new int[]{100, 4, 200, 1, 3, 2}));
-        test.reverseString(new char[]{'h', 'e', 'l', 'l', 'o'});
+//        test.reverseString(new char[]{'h', 'e', 'l', 'l', 'o'});
 
+        System.out.println(test.isPalindrome("A man, a plan, a canal: Panama"));
 
     }
 }
