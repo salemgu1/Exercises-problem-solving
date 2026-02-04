@@ -287,6 +287,23 @@ public class Solution {
         return k;
     }
 
+    public void moveZeroes(int[] nums) {
+        int lastNoZeroFound = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i]!=0){
+                nums[lastNoZeroFound] = nums[i];
+                lastNoZeroFound++;
+            }
+        }
+        for (int i = lastNoZeroFound; i < nums.length; i++) {
+            nums[i] = 0;
+        }
+
+       for (int a : nums){
+           System.out.println(a);
+       }
+    }
+
 
     public static void main(String[] args) {
         Solution test = new Solution();
@@ -313,6 +330,7 @@ public class Solution {
 //        test.reverseString(new char[]{'h', 'e', 'l', 'l', 'o'});
 
 //        System.out.println(test.isPalindrome("A man, a plan, a canal: Panama"));
-        System.out.println(test.removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}));
+//        System.out.println(test.removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}));
+        test.moveZeroes(new int[]{0,1,0,3,12});
     }
 }
