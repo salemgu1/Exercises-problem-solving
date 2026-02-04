@@ -303,6 +303,22 @@ public class Solution {
            System.out.println(a);
        }
     }
+    public int[] twoSum2(int[] numbers, int target) {
+        int left =0;
+        int right = numbers.length -1;
+        while (left < right) {
+            int sum = numbers[left] + numbers[right];
+
+            if (sum > target) {
+                right--;
+            } else if (sum < target) {
+                left++;
+            } else {
+                return new int[] {left + 1, right + 1};
+            }
+        }
+        return new int[] {};
+    }
 
 
     public static void main(String[] args) {
@@ -331,6 +347,10 @@ public class Solution {
 
 //        System.out.println(test.isPalindrome("A man, a plan, a canal: Panama"));
 //        System.out.println(test.removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}));
-        test.moveZeroes(new int[]{0,1,0,3,12});
+//        test.moveZeroes(new int[]{0,1,0,3,12});
+        int newNumbers [] = test.twoSum2(new int []{2, 7, 11, 15},9);
+        for (int i = 0; i < newNumbers.length; i++) {
+            System.out.println(newNumbers[i]);
+        };
     }
 }
