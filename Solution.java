@@ -320,6 +320,26 @@ public class Solution {
         return new int[] {};
     }
 
+    public boolean isValid2 (String s) {
+        Stack <Character> stack = new Stack<>();
+
+        for (char c:s.toCharArray()) {
+            if(c == '(' || c=='[' || c=='{'){
+                stack.push(c);
+            }
+            else {
+                if(stack.isEmpty()){
+                    return false;
+                }
+                char top = stack.pop();
+
+                if((c ==')' && top != '(') ||(c ==']' && top != '[' )||(c =='}' && top != '{') ){
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();
@@ -348,9 +368,11 @@ public class Solution {
 //        System.out.println(test.isPalindrome("A man, a plan, a canal: Panama"));
 //        System.out.println(test.removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}));
 //        test.moveZeroes(new int[]{0,1,0,3,12});
-        int newNumbers [] = test.twoSum2(new int []{2, 7, 11, 15},9);
-        for (int i = 0; i < newNumbers.length; i++) {
-            System.out.println(newNumbers[i]);
-        };
+//        int newNumbers [] = test.twoSum2(new int []{2, 7, 11, 15},9);
+//        for (int i = 0; i < newNumbers.length; i++) {
+//            System.out.println(newNumbers[i]);
+//        };
+
+        System.out.println(test.isValid2("([{}])"));
     }
 }
