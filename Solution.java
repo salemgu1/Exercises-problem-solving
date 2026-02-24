@@ -340,6 +340,18 @@ public class Solution {
         }
         return stack.isEmpty();
     }
+    public int singleNumber(int[] nums) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (map.get(nums[i])==1){
+                return nums[i];
+            }
+        }
+        return 0;
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();
@@ -373,6 +385,7 @@ public class Solution {
 //            System.out.println(newNumbers[i]);
 //        };
 
-        System.out.println(test.isValid2("([{}])"));
+//        System.out.println(test.isValid2("([{}])"));
+        System.out.println(test.singleNumber(new int []{4,1,2,1,2}));
     }
 }
